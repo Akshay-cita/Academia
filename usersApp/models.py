@@ -1,6 +1,6 @@
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
-
+from academics.models import Department,Course,Subject
 
 # Create your models here.
 class Student(models.Model):
@@ -16,8 +16,8 @@ class Student(models.Model):
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 	contact_email=models.EmailField(max_length=100)
 	contact_phone=PhoneNumberField(blank=True)
-	# course_id=
-	# department_id=
+	course_id=models.ForeignKey(Course,on_delete=models.CASCADE())
+	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
 
 
 	def __str__(self):
@@ -35,8 +35,8 @@ class Staff(models.Model):
 	address=models.CharField(max_length=500)
 	contact_email=models.EmailField(max_length=100)
 	contact_phone=PhoneNumberField(blank=True)
-	# subject_id=
-	# department_id=
+	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
+	subj_id=models.ForeignKey(Subject,on_delete=models.CASCADE())
 
 
 	def __str__(self):
@@ -55,5 +55,11 @@ class Hod(models.Model):
 	address=models.CharField(max_length=500)
 	contact_email=models.EmailField(max_length=100)
 	contact_phone=PhoneNumberField(blank=True)
+	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
+	course_id=models.ForeignKey(Course,on_delete=models.CASCADE())
 	# department_id=
+
+
+	def __str__(self):
+		return self.name
 
