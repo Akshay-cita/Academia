@@ -34,7 +34,10 @@ class AssignmentStaff(models.Model):
 	staff_id=models.ForeignKey(Staff,on_delete=models.CASCADE())
 	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
 	subj_id=models.ForeignKey(Subject,on_delete=models.CASCADE())
-	Question=models.CharField(max_length=600)
+	question=models.CharField(max_length=600)
 	end_of_submission=models.DateTimeField(auto_now=False)
 	created_at=models.DateTimeField(auto_now=True)
+
+	def __str__(self):
+		return self.question
 
