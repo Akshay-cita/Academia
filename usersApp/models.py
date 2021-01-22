@@ -9,6 +9,7 @@ class Student(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     )
+    id=models.AutoField(primary_key=True)
 	name=models.CharField(max_length=50)
 	address=models.CharField(max_length=500)
 	father_name=models.CharField(max_length=100)
@@ -17,7 +18,9 @@ class Student(models.Model):
 	contact_email=models.EmailField(max_length=100)
 	contact_phone=PhoneNumberField(blank=True)
 	course_id=models.ForeignKey(Course,on_delete=models.CASCADE())
-	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
+	created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
+	# dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
 
 
 	def __str__(self):
@@ -29,6 +32,7 @@ class Staff(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     )
+    id=models.AutoField(primary_key=True)
 	name=models.CharField(max_length=50)
 	address=models.CharField(max_length=500)
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
@@ -37,6 +41,8 @@ class Staff(models.Model):
 	contact_phone=PhoneNumberField(blank=True)
 	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
 	subj_id=models.ForeignKey(Subject,on_delete=models.CASCADE())
+	created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
 
 
 	def __str__(self):
@@ -49,14 +55,17 @@ class Hod(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     )
+    id=models.AutoField(primary_key=True)
 	name=models.CharField(max_length=50)
 	address=models.CharField(max_length=500)
 	gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 	address=models.CharField(max_length=500)
 	contact_email=models.EmailField(max_length=100)
 	contact_phone=PhoneNumberField(blank=True)
-	dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
-	course_id=models.ForeignKey(Course,on_delete=models.CASCADE())
+	# dept_id=models.ForeignKey(Department,on_delete=models.CASCADE())
+	# course_id=models.ForeignKey(Course,on_delete=models.CASCADE())
+	created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=True)
 	# department_id=
 
 
