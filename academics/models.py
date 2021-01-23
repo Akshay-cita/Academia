@@ -54,6 +54,9 @@ class LeaveApplicationStaff(models.Model):
 	created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+    	return self.Staff.name
+
 
 class LeaveApplicationStudent(models.Model):
 	student_id=models.ForeignKey(Student,on_delete=models.CASCADE())
@@ -62,15 +65,24 @@ class LeaveApplicationStudent(models.Model):
 	created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+    	return self.Student.name
+
 class MessageToStaff(models.Model):
 	staff_id=models.ForeignKey(Staff,on_delete=models.CASCADE())
 	message=models.CharField(max_length=600)
 	created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+    	return self.Staff.name
 
 class MessageToStudents(models.Model):
 	student_id=models.ForeignKey(Student,on_delete=models.CASCADE())
 	message=models.CharField(max_length=600)
 	created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+    	return self.Student.name
+
 
